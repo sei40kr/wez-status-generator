@@ -86,3 +86,26 @@ wezterm.on("update-status", function(window, pane)
     window:set_right_status(status)
 end)
 ```
+
+## API References
+
+### `generate_left_status`, `generate_right_status`
+
+Generate a status for the left or right side of the window. Expected to be
+called from the [update-status](https://wezfurlong.org/wezterm/config/lua/window-events/update-status.html) callback.
+
+#### Arguments
+
+| Name                           | Type             | Description                                                                   |
+| ------------------------------ | ---------------- | ----------------------------------------------------------------------------- |
+| `opts`                         | `table`          | Options for the status                                                        |
+| `opts.sections[]`              | `table`          | Section of the status                                                         |
+| `opts.sections[].components[]` | `fun(): string?` | Component of the section. Specify a function that returns a string to render. |
+| `opts.sections[].separator`    | `string?`        | Separator between components of the section                                   |
+| `opts.sections[].padding`      | `number?`        | Padding inside the section                                                    |
+| `opts.sections[].foreground`   | `string`         | Foreground color of the section                                               |
+| `opts.sections[].background`   | `string`         | Background color of the section                                               |
+
+#### Returns
+
+A string to be set as the status.
