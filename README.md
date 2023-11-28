@@ -96,15 +96,15 @@ called from the [update-status](https://wezfurlong.org/wezterm/config/lua/window
 
 #### Arguments
 
-| Name                           | Type             | Description                                                                   |
-| ------------------------------ | ---------------- | ----------------------------------------------------------------------------- |
-| `opts`                         | `table`          | Options for the status                                                        |
-| `opts.sections[]`              | `table`          | Section of the status                                                         |
-| `opts.sections[].components[]` | `fun(): string?` | Component of the section. Specify a function that returns a string to render. |
-| `opts.sections[].separator`    | `string?`        | Separator between components of the section                                   |
-| `opts.sections[].padding`      | `number?`        | Padding inside the section                                                    |
-| `opts.sections[].foreground`   | `string`         | Foreground color of the section                                               |
-| `opts.sections[].background`   | `string`         | Background color of the section                                               |
+| Name                           | Type             | Default  | Description                                                                   |
+| ------------------------------ | ---------------- | -------- | ----------------------------------------------------------------------------- |
+| `opts`                         | `table`          | Required | Options for the status                                                        |
+| `opts.sections[]`              | `table`          | Required | Section of the status                                                         |
+| `opts.sections[].components[]` | `fun(): string?` | Required | Component of the section. Specify a function that returns a string to render. |
+| `opts.sections[].separator`    | `string?`        | `" \| "` | Separator between components of the section                                   |
+| `opts.sections[].padding`      | `number?`        | `1`      | Padding inside the section                                                    |
+| `opts.sections[].foreground`   | `string`         | Required | Foreground color of the section                                               |
+| `opts.sections[].background`   | `string`         | Required | Background color of the section                                               |
 
 #### Returns
 
