@@ -5,7 +5,7 @@
 Clone this repository to your `$XDG_CONFIG_HOME/wezterm`:
 
 ```sh
-git clone https://github.com/sei40kr/wez-tmux.git $XDG_CONFIG_HOME/wezterm
+git clone https://github.com/sei40kr/wez-status-styler.git $XDG_CONFIG_HOME/wezterm
 ```
 
 ## Usage
