@@ -124,3 +124,37 @@ called from the [update-status](https://wezfurlong.org/wezterm/config/lua/window
 #### Returns
 
 A string to be set as the status.
+
+## Tips
+
+### Use `wezterm.format` to set the attributes of a component
+
+You cannot simply set the attributes of a component with `wezterm.format`
+because it resets current attributes all.
+
+As a workaround, you can put the foreground/background colors of the section
+together.
+
+```lua
+local status = status_generator.generate_left_status({
+    sections = {
+        {
+            components = {
+                function()
+                    return wezterm.format({
+                        { Attribute = { Intensity = "Bold" } },
+
+                        -- Put the foreground/background colors of the section together
+                        { Foreground = { Color = "#15161e" } },
+                        { Background = { Color = "#7aa2f7" } },
+
+                        { Text = window:mux_window():get_workspace() },
+                    })
+                end,
+            },
+            foreground = "#15161e",
+            background = "#7aa2f7",
+        },
+    },
+})
+```
