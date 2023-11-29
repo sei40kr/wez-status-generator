@@ -29,7 +29,7 @@ wezterm.on("update-status", function(window, pane)
             },
             {
                 components = {
-                    function() return wezterm.home_dir:gsub(".*/", "") end,
+                    function() return os.getenv("USER") end,
                 },
                 foreground = "#7aa2f7",
                 background = "#3b4261",
