@@ -1,7 +1,7 @@
 { stdenv }:
 
 stdenv.mkDerivation {
-  name = "wez-status-styler";
+  name = "wez-status-generator";
 
   src = ./.;
 

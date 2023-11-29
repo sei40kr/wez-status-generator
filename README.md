@@ -1,11 +1,11 @@
-# wez-status-style
+# wez-status-generator
 
 ## Installation
 
 Clone this repository to your `$XDG_CONFIG_HOME/wezterm`:
 
 ```sh
-git clone https://github.com/sei40kr/wez-status-styler.git $XDG_CONFIG_HOME/wezterm
+git clone https://github.com/sei40kr/wez-status-generator.git $XDG_CONFIG_HOME/wezterm
 ```
 
 ## Usage
@@ -15,8 +15,8 @@ git clone https://github.com/sei40kr/wez-status-styler.git $XDG_CONFIG_HOME/wezt
 config.use_fancy_tab_bar = false
 
 wezterm.on("update-status", function(window, pane)
-    local status_styler = require("wez-status-styler.plugin")
-    local status = status_styler.generate_left_status({
+    local status_generator = require("wez-status-generator.plugin")
+    local status = status_generator.generate_left_status({
         sections = {
             {
                 components = {
@@ -45,7 +45,7 @@ wezterm.on("update-status", function(window, pane)
                 background = "#16161e",
             },
         },
-        separator = status_styler.separators.ARROW,
+        separator = status_generator.separators.ARROW,
         hide_empty_sections = true,
     })
 
@@ -58,8 +58,8 @@ end)
 config.use_fancy_tab_bar = false
 
 wezterm.on("update-status", function(window, pane)
-    local status_styler = require("wez-status-styler.plugin")
-    local status = status_styler.generate_right_status({
+    local status_generator = require("wez-status-generator.plugin")
+    local status = status_generator.generate_right_status({
         sections = {
             {
                 components = {
@@ -83,7 +83,7 @@ wezterm.on("update-status", function(window, pane)
                 background = "#7aa2f7",
             },
         },
-        separator = status_styler.separators.ARROW,
+        separator = status_generator.separators.ARROW,
         hide_empty_sections = true,
     })
 

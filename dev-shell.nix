@@ -1,10 +1,10 @@
-{ mkShell, wezterm, wez-status-styler, writeTextFile }:
+{ mkShell, wezterm, wez-status-generator, writeTextFile }:
 
 let
   config = writeTextFile {
-    name = "wez-status-styler-dev-shell-config.lua";
+    name = "wez-status-generator-dev-shell-config.lua";
     text = ''
-      package.path = package.path .. ";${wez-status-styler}/?.lua"
+      package.path = package.path .. ";${wez-status-generator}/?.lua"
 
       local wezterm = require("wezterm")
 
@@ -17,7 +17,7 @@ let
       config.use_fancy_tab_bar = false
 
       wezterm.on("update-status", function(window, pane)
-        local status_styler = require("plugin")
+        local status_generator = require("plugin")
         local section_a = {
           foreground = "#15161e",
           background = "#7aa2f7",
@@ -30,7 +30,7 @@ let
           foreground = "#a9b1d6",
           background = "#16161e",
         }
-        local left_status = status_styler.generate_left_status({
+        local left_status = status_generator.generate_left_status({
           sections = {
             {
               components = {
@@ -60,7 +60,7 @@ let
             },
           },
         })
-        local right_status = status_styler.generate_right_status({
+        local right_status = status_generator.generate_right_status({
           sections = {
             {
               components = {
@@ -95,7 +95,7 @@ let
   };
 in
 mkShell {
-  name = "wez-status-styler-dev-shell";
+  name = "wez-status-generator-dev-shell";
 
   packages = [ wezterm ];
 

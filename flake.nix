@@ -19,14 +19,14 @@
 
       perSystem = { config, pkgs, ... }:
         let
-          wez-status-styler = pkgs.callPackage ./package.nix { };
+          wez-status-generator = pkgs.callPackage ./package.nix { };
         in
         {
-          packages = { default = wez-status-styler; };
+          packages = { default = wez-status-generator; };
 
           devShells = {
             default = pkgs.callPackage ./dev-shell.nix {
-              inherit wez-status-styler;
+              inherit wez-status-generator;
             };
           };
         };
