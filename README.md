@@ -136,6 +136,28 @@ A string to be set as the status.
 window:set_left_status(status .. (" "):rep(2))
 ```
 
+### The workspace names set by [wez-per-project-workspace](https://github.com/sei40kr/wez-per-project-workspace) are too long to display
+
+[wez-per-project-workspace](https://github.com/sei40kr/wez-per-project-workspace)
+sets the workspace names to the full path of the project directory and it's too
+long to display.
+
+You can truncate a workspace name to display the last directory name only.
+
+```lua
+local status = status_generator.generate_left_status({
+    sections = {
+        {
+            components = {
+                function()
+                    return window:mux_window():get_workspace():gsub(".*/", "")
+                end,
+            },
+        },
+    },
+})
+```
+
 ### Use `wezterm.format` to set the attributes of a component
 
 You cannot simply set the attributes of a component with `wezterm.format`
