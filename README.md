@@ -1,5 +1,7 @@
 # wez-status-generator
 
+<img src="https://raw.githubusercontent.com/sei40kr/wez-status-generator/main/img/screenshot.png" width="960" height="640" alt="screenshot">
+
 ## Installation
 
 Clone this repository to your `$XDG_CONFIG_HOME/wezterm`:
