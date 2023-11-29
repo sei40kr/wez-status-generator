@@ -127,6 +127,13 @@ A string to be set as the status.
 
 ## Tips
 
+### Insert spaces between the left status and the tab bar
+
+```lua
+-- Change the number of spaces as you like
+window:set_left_status(status .. (" "):rep(2))
+```
+
 ### Use `wezterm.format` to set the attributes of a component
 
 You cannot simply set the attributes of a component with `wezterm.format`
