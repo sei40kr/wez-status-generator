@@ -130,6 +130,7 @@ M.separators = {
   ARROW = { "", "" },
   ROUND = { "", "" },
   SLANT = { "", "" },
+  SLANT_REVERSE = { "", "" },
 };
 
 -- Generate left status from sections and components defined in opts, and return

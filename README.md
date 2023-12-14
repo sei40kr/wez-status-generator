@@ -116,12 +116,13 @@ called from the [update-status](https://wezfurlong.org/wezterm/config/lua/window
 
 ##### List of available `separators`
 
-| Name               | Value          |
-| ------------------ | -------------- |
-| `separators.NONE`  | `{ "", "" }`   |
-| `separators.ARROW` | `{ "", "" }` |
-| `separators.ROUND` | `{ "", "" }` |
-| `separators.SLANT` | `{ "", "" }` |
+| Name                       | Value          |
+| -------------------------- | -------------- |
+| `separators.NONE`          | `{ "", "" }`   |
+| `separators.ARROW`         | `{ "", "" }` |
+| `separators.ROUND`         | `{ "", "" }` |
+| `separators.SLANT`         | `{ "", "" }` |
+| `separators.SLANT_REVERSE` | `{ "", "" }` |
 
 #### Returns
 
