@@ -102,17 +102,17 @@ called from the [update-status](https://wezfurlong.org/wezterm/config/lua/window
 
 #### Arguments
 
-| Name                                  | Type             | Default            | Description                                                                     |
-| ------------------------------------- | ---------------- | ------------------ | ------------------------------------------------------------------------------- |
-| `opts`                                | `table`          | Required           | Options for the status                                                          |
-| `opts.sections[]`                     | `table`          | Required           | Section of the status                                                           |
-| `opts.sections[].components[]`        | `fun(): string?` | Required           | Component of the section. Specify a function that returns a string to render.   |
-| `opts.sections[].separator`           | `string?`        | `" \| "`           | Separator between components of the section                                     |
-| `opts.sections[].padding`             | `number?`        | `1`                | Padding inside the section                                                      |
-| `opts.sections[].foreground`          | `string`         | Required           | Foreground color of the section                                                 |
-| `opts.sections[].background`          | `string`         | Required           | Background color of the section                                                 |
-| `opts.sections[].separator`           | `separators`     | `separators.ARROW` | Separator between the sections. See below for the list of available separators. |
-| `opts.sections[].hide_empty_sections` | `boolean`        | `true`             | Whether to hide the section if all components are empty                         |
+| Name                           | Type             | Default            | Description                                                                     |
+| ------------------------------ | ---------------- | ------------------ | ------------------------------------------------------------------------------- |
+| `opts`                         | `table`          | Required           | Options for the status                                                          |
+| `opts.sections[]`              | `table`          | Required           | Section of the status                                                           |
+| `opts.sections[].components[]` | `fun(): string?` | Required           | Component of the section. Specify a function that returns a string to render.   |
+| `opts.sections[].separator`    | `string?`        | `" \| "`           | Separator between components of the section                                     |
+| `opts.sections[].padding`      | `number?`        | `1`                | Padding inside the section                                                      |
+| `opts.sections[].foreground`   | `string`         | Required           | Foreground color of the section                                                 |
+| `opts.sections[].background`   | `string`         | Required           | Background color of the section                                                 |
+| `opts.separator`               | `separators`     | `separators.ARROW` | Separator between the sections. See below for the list of available separators. |
+| `opts.hide_empty_sections`     | `boolean`        | `true`             | Whether to hide the section if all components are empty                         |
 
 ##### List of available `separators`
 
