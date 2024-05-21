@@ -48,11 +48,11 @@ end
 -- Generate status from sections and components defined in opts, and return it
 -- as a string. This is a helper function for internal use.
 ---@param position position
----@param opts { sections: section[], separator: separator?, hide_empty_sections: boolean? }
+---@param opts { sections: section[], separator: SectionSeparator?, hide_empty_sections: boolean? }
 ---@return string # The status string. Empty if there are no sections to render.
 local function generate_status(position, opts)
   local hide_empty_sections = opts.hide_empty_sections
-  local left_sep, right_sep = table.unpack(opts.separator or M.separators.ARROW)
+  local left_sep, right_sep = table.unpack(opts.separator or M.section_separators.ARROW)
   ---@type { section_string: string, foreground: string, background: string }[]
   local section_intermediates = {}
   local status_string = ""
@@ -124,8 +124,8 @@ local function generate_status(position, opts)
   return status_string
 end
 
----@enum separator
-M.separators = {
+---@enum SectionSeparator
+M.section_separators = {
   NONE = { "", "" },
   ARROW = { "", "" },
   ROUND = { "", "" },
@@ -135,7 +135,7 @@ M.separators = {
 
 -- Generate left status from sections and components defined in opts, and return
 -- it as a string.
----@param opts { sections: section[], separator: separator, hide_empty_sections: boolean }
+---@param opts { sections: section[], separator: SectionSeparator, hide_empty_sections: boolean }
 ---@return string # The status string. Empty if there are no sections to render.
 function M.generate_left_status(opts)
   return generate_status(positions.LEFT, opts)
@@ -143,7 +143,7 @@ end
 
 -- Generate right status from sections and components defined in opts, and
 -- return it as a string.
----@param opts { sections: section[], separator: separator, hide_empty_sections: boolean }
+---@param opts { sections: section[], separator: SectionSeparator, hide_empty_sections: boolean }
 ---@return string # The status string. Empty if there are no sections to render.
 function M.generate_right_status(opts)
   return generate_status(positions.RIGHT, opts)

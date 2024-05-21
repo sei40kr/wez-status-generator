@@ -2,6 +2,10 @@
 
 <img src="https://raw.githubusercontent.com/sei40kr/wez-status-generator/main/img/screenshot.png" width="960" height="640" alt="screenshot">
 
+## Breaking changes
+
+- The `separators` enum has been renamed to `section_separators`.
+
 ## Installation
 
 Clone this repository to your `$XDG_CONFIG_HOME/wezterm`:
@@ -47,7 +51,7 @@ wezterm.on("update-status", function(window, pane)
                 background = "#16161e",
             },
         },
-        separator = status_generator.separators.ARROW,
+        separator = status_generator.section_separators.ARROW,
         hide_empty_sections = true,
     })
 
@@ -85,7 +89,7 @@ wezterm.on("update-status", function(window, pane)
                 background = "#7aa2f7",
             },
         },
-        separator = status_generator.separators.ARROW,
+        separator = status_generator.section_separators.ARROW,
         hide_empty_sections = true,
     })
 
@@ -102,27 +106,27 @@ called from the [update-status](https://wezfurlong.org/wezterm/config/lua/window
 
 #### Arguments
 
-| Name                           | Type             | Default            | Description                                                                     |
-| ------------------------------ | ---------------- | ------------------ | ------------------------------------------------------------------------------- |
-| `opts`                         | `table`          | Required           | Options for the status                                                          |
-| `opts.sections[]`              | `table`          | Required           | Section of the status                                                           |
-| `opts.sections[].components[]` | `fun(): string?` | Required           | Component of the section. Specify a function that returns a string to render.   |
-| `opts.sections[].separator`    | `string?`        | `" \| "`           | Separator between components of the section                                     |
-| `opts.sections[].padding`      | `number?`        | `1`                | Padding inside the section                                                      |
-| `opts.sections[].foreground`   | `string`         | Required           | Foreground color of the section                                                 |
-| `opts.sections[].background`   | `string`         | Required           | Background color of the section                                                 |
-| `opts.separator`               | `separators`     | `separators.ARROW` | Separator between the sections. See below for the list of available separators. |
-| `opts.hide_empty_sections`     | `boolean`        | `true`             | Whether to hide the section if all components are empty                         |
+| Name                           | Type               | Default                    | Description                                                                     |
+| ------------------------------ | ------------------ | -------------------------- | ------------------------------------------------------------------------------- |
+| `opts`                         | `table`            | Required                   | Options for the status                                                          |
+| `opts.sections[]`              | `table`            | Required                   | Section of the status                                                           |
+| `opts.sections[].components[]` | `fun(): string?`   | Required                   | Component of the section. Specify a function that returns a string to render.   |
+| `opts.sections[].separator`    | `string?`          | `" \| "`                   | Separator between components of the section                                     |
+| `opts.sections[].padding`      | `number?`          | `1`                        | Padding inside the section                                                      |
+| `opts.sections[].foreground`   | `string`           | Required                   | Foreground color of the section                                                 |
+| `opts.sections[].background`   | `string`           | Required                   | Background color of the section                                                 |
+| `opts.separator`               | `SectionSeparator` | `section_separators.ARROW` | Separator between the sections. See below for the list of available separators. |
+| `opts.hide_empty_sections`     | `boolean`          | `true`                     | Whether to hide the section if all components are empty                         |
 
-##### List of available `separators`
+##### List of available `section_separators`
 
-| Name                       | Value          |
-| -------------------------- | -------------- |
-| `separators.NONE`          | `{ "", "" }`   |
-| `separators.ARROW`         | `{ "", "" }` |
-| `separators.ROUND`         | `{ "", "" }` |
-| `separators.SLANT`         | `{ "", "" }` |
-| `separators.SLANT_REVERSE` | `{ "", "" }` |
+| Name                               | Value          |
+| ---------------------------------- | -------------- |
+| `section_separators.NONE`          | `{ "", "" }`   |
+| `section_separators.ARROW`         | `{ "", "" }` |
+| `section_separators.ROUND`         | `{ "", "" }` |
+| `section_separators.SLANT`         | `{ "", "" }` |
+| `section_separators.SLANT_REVERSE` | `{ "", "" }` |
 
 #### Returns
 
