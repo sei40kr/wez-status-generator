@@ -2,10 +2,10 @@ local M = {}
 
 local wezterm = require("wezterm")
 
----@enum position
-local positions = {
-	LEFT = 0,
-	RIGHT = 1,
+---@enum positions
+local POSITIONS = {
+	left = 0,
+	right = 1,
 }
 
 ---@alias component (fun(): string?)
@@ -47,7 +47,7 @@ end
 
 -- Generate status from sections and components defined in opts, and return it
 -- as a string. This is a helper function for internal use.
----@param position position
+---@param position positions
 ---@param opts { sections: section[], separator: SectionSeparator?, hide_empty_sections: boolean? }
 ---@return string # The status string. Empty if there are no sections to render.
 local function generate_status(position, opts)
@@ -84,7 +84,7 @@ local function generate_status(position, opts)
 			next_section_intermediate = section_intermediates[i + 1]
 		end
 
-		if position == positions.RIGHT then
+		if position == POSITIONS.right then
 			local format_items = {}
 
 			if prev_section_intermediate then
@@ -103,7 +103,7 @@ local function generate_status(position, opts)
 
 		status_string = status_string .. section_intermediate.section_string
 
-		if position == positions.LEFT then
+		if position == POSITIONS.left then
 			local format_items = {}
 
 			if next_section_intermediate then
@@ -138,7 +138,7 @@ M.section_separators = {
 ---@param opts { sections: section[], separator: SectionSeparator, hide_empty_sections: boolean }
 ---@return string # The status string. Empty if there are no sections to render.
 function M.generate_left_status(opts)
-	return generate_status(positions.LEFT, opts)
+	return generate_status(POSITIONS.left, opts)
 end
 
 -- Generate right status from sections and components defined in opts, and
@@ -146,7 +146,7 @@ end
 ---@param opts { sections: section[], separator: SectionSeparator, hide_empty_sections: boolean }
 ---@return string # The status string. Empty if there are no sections to render.
 function M.generate_right_status(opts)
-	return generate_status(positions.RIGHT, opts)
+	return generate_status(POSITIONS.right, opts)
 end
 
 function M.apply_to_config(_, _) end
