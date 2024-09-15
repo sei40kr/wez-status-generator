@@ -48,11 +48,11 @@ end
 -- Generate status from sections and components defined in opts, and return it
 -- as a string. This is a helper function for internal use.
 ---@param position positions
----@param opts { sections: section[], separator: SectionSeparator?, hide_empty_sections: boolean? }
+---@param opts { sections: section[], separator: string, hide_empty_sections: boolean? }
 ---@return string # The status string. Empty if there are no sections to render.
 local function generate_status(position, opts)
+	local separator = opts.separator
 	local hide_empty_sections = opts.hide_empty_sections
-	local left_sep, right_sep = table.unpack(opts.separator or M.section_separators.ARROW)
 	---@type { section_string: string, foreground: string, background: string }[]
 	local section_intermediates = {}
 	local status_string = ""
@@ -96,7 +96,7 @@ local function generate_status(position, opts)
 			table.insert(format_items, {
 				Foreground = { Color = section_intermediate.background },
 			})
-			table.insert(format_items, { Text = right_sep })
+			table.insert(format_items, { Text = separator })
 
 			status_string = status_string .. wezterm.format(format_items)
 		end
@@ -115,7 +115,7 @@ local function generate_status(position, opts)
 			table.insert(format_items, {
 				Foreground = { Color = section_intermediate.background },
 			})
-			table.insert(format_items, { Text = left_sep })
+			table.insert(format_items, { Text = separator })
 
 			status_string = status_string .. wezterm.format(format_items)
 		end
@@ -124,28 +124,23 @@ local function generate_status(position, opts)
 	return status_string
 end
 
----@enum SectionSeparator
-M.section_separators = {
-	NONE = { "", "" },
-	ARROW = { "", "" },
-	ROUND = { "", "" },
-	SLANT = { "", "" },
-	SLANT_REVERSE = { "", "" },
-}
-
 -- Generate left status from sections and components defined in opts, and return
 -- it as a string.
----@param opts { sections: section[], separator: SectionSeparator, hide_empty_sections: boolean }
+---@param opts { sections: section[], separator: string?, hide_empty_sections: boolean }
 ---@return string # The status string. Empty if there are no sections to render.
 function M.generate_left_status(opts)
+	opts.separator = opts.separator or wezterm.nerdfonts.pl_left_hard_divider
+	---@cast opts { sections: section[], separator: string, hide_empty_sections: boolean }
 	return generate_status(POSITIONS.left, opts)
 end
 
 -- Generate right status from sections and components defined in opts, and
 -- return it as a string.
----@param opts { sections: section[], separator: SectionSeparator, hide_empty_sections: boolean }
+---@param opts { sections: section[], separator: string?, hide_empty_sections: boolean }
 ---@return string # The status string. Empty if there are no sections to render.
 function M.generate_right_status(opts)
+	opts.separator = opts.separator or wezterm.nerdfonts.pl_right_hard_divider
+	---@cast opts { sections: section[], separator: string, hide_empty_sections: boolean }
 	return generate_status(POSITIONS.right, opts)
 end
 
